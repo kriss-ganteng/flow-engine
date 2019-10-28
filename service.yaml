@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: ad1-flow-engine
+  name: ad1-flow-engine
+  namespace: development
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    port: 8215
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: ad1-flow-engine
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

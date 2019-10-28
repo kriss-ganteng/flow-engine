@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad1-flow-engine
+  labels:
+    app: ad1-flow-engine
+  name: ad1-flow-engine
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ad1-flow-engine
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ad1-flow-engine
+        version: v1.0.0
+      annotations:
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+      - name: ad1-flow-engine
+        image: registry.hub.docker.com/chupsamir/dev-ad1-flow-engine:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8215
+        env:
+        - name: VERSION
+          value: v1.0.0
+        - name: URL
+          value: ad1-registry:8761

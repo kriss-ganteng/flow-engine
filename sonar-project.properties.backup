@@ -1,0 +1,15 @@
+sonar.projectKey=com.infoflow.flowengine:flowengine
+
+sonar.sources=src/main
+sonar.tests=src/test
+
+sonar.exclusions=**/web.xml, **/target/site/*, src/main/java/com/infoflow/flowengine/config/*.java
+
+sonar.java.binaries=./target/classes/*
+sonar.java.libraries=**/*.jar
+
+sonar.java.test.binaries=./target/test-classes/*
+
+sonar.junit.reportsPath=./target/surefire-reports
+sonar.dynamicAnalysis=reuseReports
+sonar.jacoco.reportPaths=./target/test-results/coverage/jacoco/jacoco.exec

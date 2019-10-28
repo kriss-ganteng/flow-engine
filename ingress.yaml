@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels: 
+    app: ad1-flow-engine
+  name: ad1-flow-engine
+  namespace: development
+spec:
+  rules:
+  - host: 
+    http:
+      paths:
+      - backend:
+          serviceName: ad1-flow-engine
+          servicePort: 8215
+        path: /flow-engine/?(.*)
+status:
+  loadBalancer:
+    ingress:
+    - ip: 147.139.137.29
